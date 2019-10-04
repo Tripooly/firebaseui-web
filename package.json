@@ -23,7 +23,8 @@
     "test": "npm run build && npm run generate-test-files && ./buildtools/run_tests.sh",
     "serve": "npm run build && npm run generate-test-files && gulp serve",
     "generate-test-files": "./buildtools/generate_test_files.sh",
-    "prepublish": "npm run test && cp -r dist demo/public"
+    "prepublish": "npm run snyk-protect && npm run test && cp -r dist demo/public",
+    "snyk-protect": "snyk protect"
   },
   "test": "npm run test",
   "author": "Google",
@@ -54,9 +55,11 @@
     "streamqueue": "^1.1.1"
   },
   "dependencies": {
-    "dialog-polyfill": "^0.4.7"
+    "dialog-polyfill": "^0.4.7",
+    "snyk": "^1.230.5"
   },
   "peerDependencies": {
     "firebase": ">=5.0.0"
-  }
+  },
+  "snyk": true
 }
